@@ -1,5 +1,6 @@
 function welcome() {
   const date = new Date();
-  console.log('Welcome. Today is ' + date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear());
+  const today = `${date.getDate()} - ${date.getMonth() + 1} - ${date.getFullYear()}`;
+  console.log('Welcome. Today is ' + today);
 }
 welcome();
