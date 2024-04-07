@@ -42,12 +42,52 @@ const number26 = parseFloat('15.15');
 const number27 = parseFloat('15.15.15');
 const number28 = parseFloat('15.15abc');
 const number29 = parseFloat('2.0' * Math.PI);
+
 // 3) boolean
+const boolean1 = true;
+const boolean2 = false;
+const boolean3 = 3 > 4;
+const boolean4 = number16 <= 4;
+const boolean5 = 3 == '3';
+const boolean6 = 3 === '3';
+const boolean7 = false === '';
+const boolean8 = false == '';
+const boolean9 = Boolean([]);
+const boolean10 = Boolean(null);
+const boolean11 = Boolean(Boolean(!false));
+const boolean12 = Boolean(10);
+const boolean13 = Boolean('10');
+const boolean14 = !10;
+const boolean15 = !!10;
+const surname = 'Smith';
+let boolean16;
+surname.length === 5 ? boolean16 = true : boolean16 = false;
+
 // 4) null
+const null1 = null;
+const null2 = Object.getPrototypeOf(Object.getPrototypeOf(Object.getPrototypeOf(Object)));
+
 // 5) undefined
+const undefined1 = undefined;
+let undefined2;
+const obj1 = {};
+const undefined3 = obj1.value;
+const emptyFunction = () => {
+};
+const undefined4 = emptyFunction;
+
 // 6) symbol
+const symbol1 = Symbol();
+const symbol2 = Symbol(10);
+const symbol3 = Symbol('abc');
+const symbol4 = Symbol({});
+
 // 7) bigInt
-console.log(number29);
+const bigInt1 = 1n;
+const bigInt2 = 1n + 2n;
+const bigInt3 = BigInt(Number.MAX_SAFE_INTEGER);
+const bigInt4 = BigInt('10');
+const bigInt5 = BigInt("0x1fffffffffffff");
 
 // * Задание 4
 // Если обратиться к переменным, созданным через let или const до их объявления, мы получим ReferenceError. Это происходит из-за того, что такие переменные попадают в так называемую "temporal dead zone" (это условная зона до их объявления).
