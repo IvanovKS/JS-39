@@ -154,6 +154,37 @@ console.groupEnd();
 // };
 // const object2 = structuredClone(object1, { transfer: [buffer1] });
 
+// * Бонус задание 1
+
+const obj1 = {
+  here: { is: "on", other: "3" }, 
+  object: "Y"
+};
+
+const obj2 = {
+  here: { is: "on", other: "2" },
+  object: "Y"
+};
+
+function deepEqual(obj1, obj2) {
+  if (typeof obj1 !== 'object' || typeof obj2 !== 'object' || obj1 === null || obj2 === null) {
+    return obj1 === obj2;
+  }
+  if (Array.isArray(obj1) !== Array.isArray(obj2)) {
+    return false;
+  }
+  if (Object.keys(obj1).length !== Object.keys(obj2).length) {
+    return false;
+  }
+  for (let key in obj1) {
+    if (!deepEqual(obj1[key], obj2[key])) {
+      return false;
+    }
+  }
+  return true;
+}
+console.log(deepEqual(obj1, obj2));
+
 // * Бонус задание 2
 
 function reverseStr(str) {
