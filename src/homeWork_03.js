@@ -41,3 +41,153 @@ console.log(minNumber);
 console.groupEnd;
 
 // *Задание 3.2
+class Stack {
+  constructor() {
+    this.elements = [];
+  }
+
+  size() {
+    return this.elements.length;
+  }
+  isEmpty() {
+    if (this.elements.length === 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  push(element) {
+    this.elements.push(element);
+  }
+  pop() {
+    if (this.isEmpty()) {
+      return 'Stack is empty';
+    }
+    return this.elements.pop();
+  }
+  top() {
+    if (this.isEmpty()) {
+      return 'Stack is empty';
+    }
+    return this.elements[this.elements.length - 1];
+  }
+  bottom() {
+    if (this.isEmpty()) {
+      return 'Stack is empty';
+    }
+    return this.elements[0];
+  }
+}
+
+const stack = new Stack();
+
+console.group('Task 3.2, empty stack:');
+console.log(stack.size());
+console.log(stack.isEmpty());
+console.log(stack.pop());
+console.log(stack.top());
+console.log(stack.bottom());
+console.groupEnd;
+
+stack.push('a');
+
+console.group('Task 3.2, stack with 1 element:');
+console.log(stack.size());
+console.log(stack.isEmpty());
+console.log(stack.top());
+console.log(stack.bottom());
+console.groupEnd;
+
+stack.push('b');
+
+console.group('Task 3.2, stack with several elements:');
+console.log(stack.size());
+console.log(stack.isEmpty());
+console.log(stack.top());
+console.log(stack.bottom());
+console.groupEnd;
+
+// *Задание 3.3
+class Queue {
+  constructor() {
+    this.elements = [];
+  }
+
+  size() {
+    return this.elements.length;
+  }
+  isEmpty() {
+    if (this.elements.length === 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  push(element) {
+    this.elements.push(element);
+  }
+  shift() {
+    if (this.isEmpty()) {
+      return 'Queue is empty';
+    }
+    return this.elements.shift();
+  }
+  lastInQueue() {
+    if (this.isEmpty()) {
+      return 'Queue is empty';
+    }
+    return this.elements[this.elements.length - 1];
+  }
+  firstInQueue() {
+    if (this.isEmpty()) {
+      return 'Queue is empty';
+    }
+    return this.elements[0];
+  }
+  indexInQueue(item) {
+    if (this.isEmpty()) {
+      return 'Queue is empty';
+    }
+    const index = this.elements.indexOf(item);
+    if (index >= 0) {
+      return `${item} has number ${index + 1} in queue`;
+    } else {
+      return `${item} is not found`;
+    }
+  }
+}
+
+const queueInShop = new Queue();
+
+console.group('Task 3.3, empty queue:');
+console.log(queueInShop.size());
+console.log(queueInShop.isEmpty());
+console.log(queueInShop.shift());
+console.log(queueInShop.firstInQueue());
+console.log(queueInShop.lastInQueue());
+console.log(queueInShop.indexInQueue('customer_1'));
+console.groupEnd;
+
+queueInShop.push('customer_1');
+
+console.group('Task 3.3, queue has only 1 customer:');
+console.log(queueInShop.size());
+console.log(queueInShop.isEmpty());
+console.log(queueInShop.firstInQueue());
+console.log(queueInShop.lastInQueue());
+console.log(queueInShop.indexInQueue('customer_1'));
+console.groupEnd;
+
+queueInShop.push('customer_2');
+queueInShop.push('customer_3');
+
+console.group('Task 3.3, queue has several customers:');
+console.log(queueInShop.size());
+console.log(queueInShop.isEmpty());
+console.log(queueInShop.firstInQueue());
+console.log(queueInShop.lastInQueue());
+console.log(queueInShop.indexInQueue('customer_2'));
+console.log(queueInShop.shift());
+console.log(queueInShop.indexInQueue('customer_4'));
+console.log(queueInShop);
+console.groupEnd;
