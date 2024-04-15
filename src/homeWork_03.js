@@ -191,3 +191,19 @@ console.log(queueInShop.shift());
 console.log(queueInShop.indexInQueue('customer_4'));
 console.log(queueInShop);
 console.groupEnd;
+
+// *Дополнительное задание
+Function.prototype.newBind = function(context) {
+  const func = this;
+  return function(...args) {
+    return func.apply(context, args);
+  }
+}
+
+function getName() {
+  console.log(this.name);
+}
+const user = {
+  name: 'Alex'
+};
+const nameForUser = getName.newBind(user)();
