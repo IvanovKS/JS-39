@@ -37,3 +37,74 @@
 // 4. Цикл "for...in": Перебирает свойства объекта.
 // 5. Цикл "for...of": Используется для перебора итерируемых объектов (массивы, строки и др.).
 // 6. Цикл "switch-case": Используется для выбора действия на основе значения выражения.
+
+// * Задание 3
+// Создать объект Person несколькими способами:
+// 1-й способ:
+const person_1 = {
+  name: 'Alex',
+  age: 25,
+};
+
+// 2-й способ:
+const person_2 = new Object();
+person_2.name = 'Alex';
+person_2.age = 25;
+
+// 3-й способ:
+function Person_(name, age) {
+  this.name = name;
+  this.age = age;
+}
+const person_3 = new Person_('Mike', 30);
+
+// 4-й способ:
+const person_4 = Object.create(person_1);
+person_4.name = 'Lena';
+person_4.age = 35;
+
+// 5-й способ:
+const person_5 = Object.assign({}, person_1);
+person_5.name = 'Sonya';
+
+// 6-й способ:
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+  greeting() {
+    console.log(`Hello, I am ${this.name}`);
+}
+}
+const person_6 = new Person('Sasha', 45);
+
+// создать объект Person2, чтобы в нём были доступны методы объекта Person:
+class Person2 extends Person {};
+const person2 = new Person2('Michel', 70);
+person2.greeting();
+
+// Добавить метод logInfo чтоб он был доступен всем объектам:
+Person.prototype.logInfo = function() {
+  console.log(`name: ${this.name}, age: ${this.age}`);
+};
+person_6.logInfo();
+person2.logInfo();
+
+// * Задание 4
+class PersonThree extends Person {
+  constructor(name) {
+    super(name)
+  }
+  get getName() {
+    return this.name;
+  }
+  set setName(newName) {
+    this.name = newName;
+  }
+}
+const person3 = new PersonThree('Sara');
+person3.greeting();
+console.log(person3.getName);
+person3.setName = 'Tom';
+person3.greeting();
