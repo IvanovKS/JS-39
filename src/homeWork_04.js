@@ -96,15 +96,56 @@ class PersonThree extends Person {
   constructor(name) {
     super(name)
   }
-  get getName() {
+  get currentName() {
     return this.name;
   }
-  set setName(newName) {
+  set currentName(newName) {
     this.name = newName;
   }
 }
 const person3 = new PersonThree('Sara');
 person3.greeting();
-console.log(person3.getName);
-person3.setName = 'Tom';
+console.log(person3.currentName);
+person3.currentName = 'Tom';
 person3.greeting();
+
+// * Бонус
+const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const total = 13;
+//result = [4, 9];
+
+// Сложность O(log n):
+const firstSum = (arr, total) => {
+  let result = [];
+  let left = 0;
+  let right = arr.length - 1;
+  for (let i = 0; i < arr.length; i++) {
+    if ((arr[left] + arr[right]) === total) {
+      result.push(arr[left], arr[right]);
+      break;
+    } else if ((arr[left] + arr[right]) < total) {
+      left++;
+    } else {
+      right--;
+    }
+  }
+  return result;
+}
+console.log(firstSum(arr,total));
+
+// Сложность O(n^2):
+const firstSum_2 = (arr, total) => {
+  let result = [];
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      if ((arr[i] + arr[j]) === total) {
+        result.push(arr[i], arr[j]);
+        return result;
+      }
+    }
+  }
+  return result;
+}
+console.log(firstSum_2(arr,total));
+
+
