@@ -74,3 +74,30 @@ console.log(func(arr));
 
 // const colors = fetch("../data/colors.json").then((response) => response.json());
 // export default await colors;
+
+// * Бонус
+function fetchUrl (url) {
+  let counter = 0;
+  function urlAttempts() {
+    fetch(url)
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch((error) => {
+        counter++;
+        if (counter <= 5) {
+          console.log(`Error № ${counter}`);
+          return urlAttempts();
+        } else {
+          throw error;
+        }
+      });
+    }
+  return urlAttempts();
+}
+
+// ! Для проверки ошибочных запросов
+// fetchUrl('http://www.boredapi.cm/api/activity/')
+
+// ! Для проверки удачных запросов
+// fetchUrl('http://www.boredapi.com/api/activity/')
+
